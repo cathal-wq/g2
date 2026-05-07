@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SurfQuest - Coastal Erosion Adventure</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active">
+    <h1>🏄 Super Surfer Supreme</h1>
+    <h2>Coastal Erosion Adventure</h2>
+
+    <p>
+      Ride the waves along the coastline and identify coastal erosion features!
+    </p>
+
+    <input type="text" id="student-name" placeholder="Enter your name" />
+
+    <button id="start-btn">Start Adventure</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-screen" class="screen">
+
+    <div class="top-bar">
+      <div id="progress-text">Question 1 / 10</div>
+      <div id="score-display">Score: 0</div>
+    </div>
+
+    <div class="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <div class="image-container">
+      <img id="feature-image" src="" alt="Coastal Feature"/>
+    </div>
+
+    <h2 id="question-text"></h2>
+
+    <div id="answers-container"></div>
+
+    <button id="next-btn">Next Wave ➜</button>
+
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="result-screen" class="screen">
+
+    <h1>🌊 Adventure Complete!</h1>
+
+    <div class="result-box">
+      <h2 id="final-score"></h2>
+      <h3 id="percentage"></h3>
+      <p id="feedback"></p>
+    </div>
+
+    <button onclick="location.reload()">Play Again</button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
