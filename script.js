@@ -7,27 +7,27 @@ const questions = [
   },
   {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKrN1jz0i93WbBDJU27x_CcYzy2YWfTHZQOw&s",
-    question: "Which coastal erosion feature is this?",
-    answers: ["Bay", "Cave", "Arch", "Headland"],
-    correct: 2
-  },
-  {
-    image: "https://www.historyhit.com/app/uploads/2022/05/old-harry-rocks.jpg",
-    question: "This isolated pillar of rock is called a:",
-    answers: ["Stack", "Spit", "Bar", "Cave"],
+    question: "What feature is forming in this image?",
+    answers: ["Cave", "Stack", "Arch", "Headland"],
     correct: 0
   },
   {
+    image: "https://www.historyhit.com/app/uploads/2022/05/old-harry-rocks.jpg",
+    question: "What is this isolated rock formation called?",
+    answers: ["Spit", "Stack", "Bar", "Delta"],
+    correct: 1
+  },
+  {
     image: "https://upload.wikimedia.org/wikipedia/commons/6/63/Wavecut_platform_southerndown_pano.jpg",
-    question: "Identify this coastal feature:",
-    answers: ["Arch", "Stack", "Wave-cut platform", "Cave"],
-    correct: 2
+    question: "What coastal erosion feature is this?",
+    answers: ["Wave-cut platform", "Arch", "Stack", "Cave"],
+    correct: 0
   },
   {
     image: "https://images-prod.anothermag.com/900/azure/another-prod/350/7/357608.jpg",
-    question: "What feature forms first in coastal erosion?",
-    answers: ["Stack", "Arch", "Cave", "Stump"],
-    correct: 2
+    question: "What forms after a cave collapses?",
+    answers: ["Arch", "Stack", "Spit", "Bay"],
+    correct: 1
   }
 ];
 
