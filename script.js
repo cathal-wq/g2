@@ -1,30 +1,30 @@
 const questions = [
   {
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/73/Sea_Arch.jpg",
+    image: "https://www.popsci.com/wp-content/uploads/2019/03/18/PAWWGDCXZSFURWXDLPHM6UQ4BI.jpg",
     question: "What coastal feature is shown here?",
     answers: ["Stack", "Arch", "Spit", "Wave-cut platform"],
     correct: 1
   },
   {
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Durdle_Door_Overview.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKrN1jz0i93WbBDJU27x_CcYzy2YWfTHZQOw&s",
     question: "Which coastal erosion feature is this?",
     answers: ["Bay", "Cave", "Arch", "Headland"],
     correct: 2
   },
   {
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Old_Harry_Rocks.jpg",
+    image: "https://www.historyhit.com/app/uploads/2022/05/old-harry-rocks.jpg",
     question: "This isolated pillar of rock is called a:",
     answers: ["Stack", "Spit", "Bar", "Cave"],
     correct: 0
   },
   {
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/10/Wave-cut_platform.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/63/Wavecut_platform_southerndown_pano.jpg",
     question: "Identify this coastal feature:",
     answers: ["Arch", "Stack", "Wave-cut platform", "Cave"],
     correct: 2
   },
   {
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Sea_cave.jpg",
+    image: "https://images-prod.anothermag.com/900/azure/another-prod/350/7/357608.jpg",
     question: "What feature forms first in coastal erosion?",
     answers: ["Stack", "Arch", "Cave", "Stump"],
     correct: 2
