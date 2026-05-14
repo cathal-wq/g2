@@ -54,7 +54,6 @@ const finalScore = document.getElementById("final-score");
 const percentageText = document.getElementById("percentage");
 const feedback = document.getElementById("feedback");
 
-// START GAME
 startBtn.addEventListener("click", () => {
   const name = document.getElementById("student-name").value.trim();
 
@@ -69,7 +68,6 @@ startBtn.addEventListener("click", () => {
   loadQuestion();
 });
 
-// LOAD QUESTION
 function loadQuestion() {
   selectedAnswer = null;
 
@@ -85,7 +83,7 @@ function loadQuestion() {
     btn.textContent = answer;
     btn.classList.add("answer-btn");
 
-    btn.addEventListener("click", () => selectAnswer(index, btn));
+    btn.addEventListener("click", () => selectAnswer(index));
 
     answersContainer.appendChild(btn);
   });
@@ -96,7 +94,6 @@ function loadQuestion() {
     `${(currentQuestion / questions.length) * 100}%`;
 }
 
-// SELECT ANSWER
 function selectAnswer(index) {
   if (selectedAnswer !== null) return;
 
@@ -116,7 +113,6 @@ function selectAnswer(index) {
   }
 }
 
-// NEXT BUTTON
 nextBtn.addEventListener("click", () => {
   if (selectedAnswer === null) {
     alert("Choose an answer first!");
@@ -132,7 +128,6 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// FINISH GAME
 function finishGame() {
   gameScreen.classList.remove("active");
   resultScreen.classList.add("active");
@@ -151,8 +146,10 @@ function finishGame() {
     feedback.textContent = "Keep studying coastal erosion features! 📚";
   }
 
-function sendToGoogleSheets(score, total, percent) {
+  sendToGoogleSheets(score, total, percent);
+}
 
+function sendToGoogleSheets(score, total, percent) {
   const name = document.getElementById("student-name").value;
 
   fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
@@ -165,5 +162,4 @@ function sendToGoogleSheets(score, total, percent) {
       dateTime: new Date().toLocaleString()
     })
   });
-
 }
