@@ -175,7 +175,7 @@ function sendToGoogleSheets(score, total, percent) {
 
   const name = document.getElementById("student-name").value;
 
-  fetch("https://docs.google.com/spreadsheets/d/1KI1P6R-RYqO2MxeuKgP4YcQ_Mv6cEIomkPfXzoDETK0/edit?usp=sharing", {
+  fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
 
     method: "POST",
 
