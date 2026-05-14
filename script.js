@@ -151,17 +151,16 @@ function finishGame() {
     feedback.textContent = "Keep studying coastal erosion features! 📚";
   }
 
-  sendToGoogleSheets(score, total, percent);
-}
-
-// SEND TO GOOGLE SHEETS
-function sendToGoogleSheets(score, total, percent) {
+ function sendToGoogleSheets(score, total, percent) {
 
   const name = document.getElementById("student-name").value;
 
   fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
     method: "POST",
-    body: new URLSearchParams({
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
       name: name,
       score: score,
       total: total,
