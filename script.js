@@ -1,3 +1,4 @@
+
 const questions = [
   {
     image: "https://www.popsci.com/wp-content/uploads/2019/03/18/PAWWGDCXZSFURWXDLPHM6UQ4BI.jpg",
@@ -90,8 +91,7 @@ function loadQuestion() {
 
   progressText.textContent = `Question ${currentQuestion + 1} / ${questions.length}`;
 
-  progressBar.style.width =
-    `${(currentQuestion / questions.length) * 100}%`;
+  progressBar.style.width = `${(currentQuestion / questions.length) * 100}%`;
 }
 
 function selectAnswer(index) {
@@ -129,6 +129,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 function finishGame() {
+
   gameScreen.classList.remove("active");
   resultScreen.classList.add("active");
 
