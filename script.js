@@ -159,9 +159,9 @@ function sendToGoogleSheets(score, total, percent) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      name,
-      score,
-      total,
+      name: name,
+      score: score,
+      total: total,
       percentage: percent,
       dateTime: new Date().toLocaleString()
     })
