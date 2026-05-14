@@ -60,15 +60,29 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
+
 function finishGame() {
+
+  gameScreen.classList.remove("active");
+  resultScreen.classList.add("active");
 
   const total = questions.length;
   const percent = Math.round((score / total) * 100);
 
-  alert(`Score: ${score}/${total} (${percent}%)`);
+  finalScore.textContent = `You scored ${score} out of ${total}`;
+  percentageText.textContent = `${percent}%`;
+
+  if (percent >= 80) {
+    feedback.textContent = "Excellent coastal geography knowledge! 🌟";
+  } else if (percent >= 50) {
+    feedback.textContent = "Good effort! 🌊";
+  } else {
+    feedback.textContent = "Keep studying coastal erosion features! 📚";
+  }
 
   sendToGoogleSheets(score, total, percent);
 }
+
 
 function sendToGoogleSheets(score, total, percent) {
 
