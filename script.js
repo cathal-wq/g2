@@ -153,17 +153,20 @@ function finishGame() {
 
 function sendToGoogleSheets(score, total, percent) {
 
-  const name = document.getElementById("student-name").value;
+  const url = "PASTE_YOUR_EXEC_URL_HERE";
 
-  fetch("YOUR_APPS_SCRIPT_URL_HERE", {
+  const params = new URLSearchParams({
+    name: document.getElementById("student-name").value,
+    score: String(score),
+    total: String(total),
+    percentage: String(percent),
+    dateTime: new Date().toLocaleString()
+  });
+
+  fetch(url, {
     method: "POST",
-    body: new URLSearchParams({
-      name: name,
-      score: score,
-      total: total,
-      percentage: percent,
-      dateTime: new Date().toLocaleString()
-    })
+    body: params,
+    mode: "no-cors"
   });
 
 }
