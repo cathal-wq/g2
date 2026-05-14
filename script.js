@@ -54,11 +54,11 @@ const finalScore = document.getElementById("final-score");
 const percentageText = document.getElementById("percentage");
 const feedback = document.getElementById("feedback");
 
+// START GAME
 startBtn.addEventListener("click", () => {
-
   const name = document.getElementById("student-name").value.trim();
 
-  if(name === "") {
+  if (name === "") {
     alert("Please enter your name.");
     return;
   }
@@ -69,8 +69,8 @@ startBtn.addEventListener("click", () => {
   loadQuestion();
 });
 
+// LOAD QUESTION
 function loadQuestion() {
-
   selectedAnswer = null;
 
   const q = questions[currentQuestion];
@@ -81,9 +81,7 @@ function loadQuestion() {
   answersContainer.innerHTML = "";
 
   q.answers.forEach((answer, index) => {
-
     const btn = document.createElement("button");
-
     btn.textContent = answer;
     btn.classList.add("answer-btn");
 
@@ -92,16 +90,15 @@ function loadQuestion() {
     answersContainer.appendChild(btn);
   });
 
-  progressText.textContent =
-    `Question ${currentQuestion + 1} / ${questions.length}`;
+  progressText.textContent = `Question ${currentQuestion + 1} / ${questions.length}`;
 
   progressBar.style.width =
-    `${((currentQuestion) / questions.length) * 100}%`;
+    `${(currentQuestion / questions.length) * 100}%`;
 }
 
-function selectAnswer(index, button) {
-
-  if(selectedAnswer !== null) return;
+// SELECT ANSWER
+function selectAnswer(index) {
+  if (selectedAnswer !== null) return;
 
   selectedAnswer = index;
 
@@ -109,66 +106,56 @@ function selectAnswer(index, button) {
   const buttons = document.querySelectorAll(".answer-btn");
 
   buttons.forEach((btn, i) => {
-
-    if(i === q.correct) {
-      btn.classList.add("correct");
-    }
-
-    if(i === index && i !== q.correct) {
-      btn.classList.add("wrong");
-    }
+    if (i === q.correct) btn.classList.add("correct");
+    if (i === index && i !== q.correct) btn.classList.add("wrong");
   });
 
-  if(index === q.correct) {
+  if (index === q.correct) {
     score++;
     scoreDisplay.textContent = `Score: ${score}`;
   }
 }
 
+// NEXT BUTTON
 nextBtn.addEventListener("click", () => {
-
-  if(selectedAnswer === null) {
+  if (selectedAnswer === null) {
     alert("Choose an answer first!");
     return;
   }
 
   currentQuestion++;
 
-  if(currentQuestion < questions.length) {
+  if (currentQuestion < questions.length) {
     loadQuestion();
   } else {
     finishGame();
   }
 });
 
+// FINISH GAME
 function finishGame() {
-
   gameScreen.classList.remove("active");
   resultScreen.classList.add("active");
 
   const total = questions.length;
   const percent = Math.round((score / total) * 100);
 
-  finalScore.textContent =
-    `You scored ${score} out of ${total}`;
+  finalScore.textContent = `You scored ${score} out of ${total}`;
+  percentageText.textContent = `${percent}%`;
 
-  percentageText.textContent =
-    `${percent}%`;
-
-  if(percent >= 80) {
-    feedback.textContent =
-      "Excellent coastal geography knowledge! 🌟";
-  }
-  else if(percent >= 50) {
-    feedback.textContent =
-      "Good effort! 🌊";
-  }
-  else {
-    feedback.textContent =
-      "Keep studying coastal erosion features! 📚";
+  if (percent >= 80) {
+    feedback.textContent = "Excellent coastal geography knowledge! 🌟";
+  } else if (percent >= 50) {
+    feedback.textContent = "Good effort! 🌊";
+  } else {
+    feedback.textContent = "Keep studying coastal erosion features! 📚";
   }
 
-  function sendToGoogleSheets(score, total, percent) {
+  sendToGoogleSheets(score, total, percent);
+}
+
+// SEND TO GOOGLE SHEETS
+function sendToGoogleSheets(score, total, percent) {
 
   const name = document.getElementById("student-name").value;
 
@@ -186,7 +173,4 @@ function finishGame() {
     })
   });
 
-}
-
-    
 }
