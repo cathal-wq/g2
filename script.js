@@ -153,7 +153,7 @@ function finishGame() {
 
 function sendToGoogleSheets(score, total, percent) {
 
-  const url = "PASTE_YOUR_EXEC_URL_HERE";
+  const url = "https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec";
 
   const params = new URLSearchParams({
     name: document.getElementById("student-name").value,
