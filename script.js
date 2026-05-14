@@ -161,10 +161,7 @@ function sendToGoogleSheets(score, total, percent) {
 
   fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+    body: new URLSearchParams({
       name: name,
       score: score,
       total: total,
