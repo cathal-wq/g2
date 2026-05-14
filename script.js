@@ -154,8 +154,13 @@ function sendToGoogleSheets(score, total, percent) {
 
   const name = document.getElementById("student-name").value;
 
+ function sendToGoogleSheets(score, total, percent) {
+
+  const name = document.getElementById("student-name").value;
+
   fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
     method: "POST",
+    mode: "no-cors",
     body: new URLSearchParams({
       name: name,
       score: score,
@@ -164,4 +169,5 @@ function sendToGoogleSheets(score, total, percent) {
       dateTime: new Date().toLocaleString()
     })
   });
+
 }
