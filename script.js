@@ -1,4 +1,5 @@
 
+
 const questions = [
   {
     image: "https://www.popsci.com/wp-content/uploads/2019/03/18/PAWWGDCXZSFURWXDLPHM6UQ4BI.jpg",
@@ -35,7 +36,10 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 let selectedAnswer = null;
-let playerName = "";
+
+const startScreen = document.getElementById("start-screen");
+const gameScreen = document.getElementById("game-screen");
+const resultScreen = document.getElementById("result-screen");
 
 const startBtn = document.getElementById("start-btn");
 const nextBtn = document.getElementById("next-btn");
@@ -44,20 +48,18 @@ const questionText = document.getElementById("question-text");
 const featureImage = document.getElementById("feature-image");
 const answersContainer = document.getElementById("answers-container");
 
-const startScreen = document.getElementById("start-screen");
-const gameScreen = document.getElementById("game-screen");
-const resultScreen = document.getElementById("result-screen");
-
 const scoreDisplay = document.getElementById("score-display");
+const progressText = document.getElementById("progress-text");
+const progressBar = document.getElementById("progress-bar");
+
 const finalScore = document.getElementById("final-score");
 const percentageText = document.getElementById("percentage");
 const feedback = document.getElementById("feedback");
 
 startBtn.addEventListener("click", () => {
+  const name = document.getElementById("student-name").value.trim();
 
-  playerName = document.getElementById("student-name").value.trim();
-
-  if (!playerName) {
+  if (name === "") {
     alert("Please enter your name.");
     return;
   }
@@ -69,7 +71,6 @@ startBtn.addEventListener("click", () => {
 });
 
 function loadQuestion() {
-
   selectedAnswer = null;
 
   const q = questions[currentQuestion];
@@ -80,19 +81,21 @@ function loadQuestion() {
   answersContainer.innerHTML = "";
 
   q.answers.forEach((answer, index) => {
-
     const btn = document.createElement("button");
     btn.textContent = answer;
     btn.classList.add("answer-btn");
 
-    btn.onclick = () => selectAnswer(index);
+    btn.addEventListener("click", () => selectAnswer(index));
 
     answersContainer.appendChild(btn);
   });
+
+  progressText.textContent = `Question ${currentQuestion + 1} / ${questions.length}`;
+
+  progressBar.style.width = `${(currentQuestion / questions.length) * 100}%`;
 }
 
 function selectAnswer(index) {
-
   if (selectedAnswer !== null) return;
 
   selectedAnswer = index;
@@ -112,7 +115,6 @@ function selectAnswer(index) {
 }
 
 nextBtn.addEventListener("click", () => {
-
   if (selectedAnswer === null) {
     alert("Choose an answer first!");
     return;
@@ -135,7 +137,7 @@ function finishGame() {
   const total = questions.length;
   const percent = Math.round((score / total) * 100);
 
-  finalScore.textContent = `${playerName}, you scored ${score} out of ${total}`;
+  finalScore.textContent = `You scored ${score} out of ${total}`;
   percentageText.textContent = `${percent}%`;
 
   if (percent >= 80) {
@@ -145,4 +147,22 @@ function finishGame() {
   } else {
     feedback.textContent = "Keep studying coastal erosion features! 📚";
   }
+
+  sendToGoogleSheets(score, total, percent);
+}
+
+function sendToGoogleSheets(score, total, percent) {
+
+  const name = document.getElementById("student-name").value;
+
+  fetch("https://script.google.com/macros/s/AKfycbysA9_A7-yTy4JIhJYDrsWT2I2l6lacVEh9mbWbHhD8fBaV-DijCUj5DGLvLkpnD0vC/exec", {
+    method: "POST",
+    body: new URLSearchParams({
+      name: name,
+      score: score,
+      total: total,
+      percentage: percent,
+      dateTime: new Date().toLocaleString()
+    })
+  });
 }
