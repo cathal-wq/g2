@@ -7,9 +7,9 @@ const questions = [
   },
   {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKrN1jz0i93WbBDJU27x_CcYzy2YWfTHZQOw&s",
-    question: "What feature is forming in this image?",
+    question: "What feature is in this image?",
     answers: ["Cave", "Stack", "Arch", "Headland"],
-    correct: 0
+    correct: 3
   },
   {
     image: "https://www.historyhit.com/app/uploads/2022/05/old-harry-rocks.jpg",
@@ -25,9 +25,9 @@ const questions = [
   },
   {
     image: "https://images-prod.anothermag.com/900/azure/another-prod/350/7/357608.jpg",
-    question: "What forms after a cave collapses?",
-    answers: ["Arch", "Stack", "Spit", "Bay"],
-    correct: 1
+    question: "What coastal erosion feature is this?",
+    answers: ["I dont know ☹️", "Stack", "Sea cave", "Bay"],
+    correct: 3
   }
 ];
 
